@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "document": {
+    "title": "The Small Exchange",
+    "language": "en",
+    "page": {
+      "width_mm": 210,
+      "height_mm": 297,
+      "margin_mm": {
+        "top": 18,
+        "right": 18,
+        "bottom": 18,
+        "left": 18
+      }
+    }
+  },
+  "pages": [
+    {
+      "id": "synthetic-01",
+      "section": "Invented systems",
+      "title": "A small exchange",
+      "subtitle": "A fictional example with three stages",
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Starting conditions"
+        },
+        {
+          "type": "paragraph",
+          "text": "Three invented stations pass a blue token from one to the next. The names and values in this example are fictional."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Station Alder begins with two tokens.",
+            "Station Birch receives one token.",
+            "Station Cedar records the final count."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "title": "Synthetic note",
+          "text": "This note contains invented text for a rendering test."
+        },
+        {
+          "type": "fact_card",
+          "label": "Sample count",
+          "value": "3 stations",
+          "detail": "A made-up value used only by this example."
+        },
+        {
+          "type": "relationship_diagram",
+          "nodes": [
+            "Alder",
+            "Birch",
+            "Cedar"
+          ],
+          "relations": [
+            "passes one token",
+            "records the count"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "synthetic-02",
+      "section": "Invented systems",
+      "title": "A second page",
+      "subtitle": "Page numbering follows the input array",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This second invented page lets the smoke test check that output page count follows the JSON page array."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A rendering check",
+          "text": "The content is synthetic and exists only to exercise the page renderer."
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Read the invented labels.",
+            "Follow the synthetic sequence."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+name: Renderer CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-validation:
+    name: Synthetic validation and PDF build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: "3.13.2"
+
+      - name: Set up Typst
+        uses: typst-community/setup-typst@fee4b65b091cc546f02ce3be15fad8760f38a108
+        with:
+          typst-version: "0.14.2"
+
+      - name: Install pinned fonts and PDF utilities
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes \
+            fonts-paratype=20181108-3 \
+            poppler-utils=24.02.0-1ubuntu9.11
+
+      - name: Install pinned test dependencies
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Check toolchain and font discovery
+        run: |
+          python --version
+          typst --version
+          pdfinfo -v
+          typst fonts | grep -Fx 'PT Sans'
+          typst fonts | grep -Fx 'PT Mono'
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Build synthetic PDF
+        run: python build.py --input examples/synthetic-book.json --output build/synthetic-book.pdf

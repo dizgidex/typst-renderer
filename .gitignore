@@ -1,0 +1,32 @@
+# Python bytecode and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Local environments and credentials
+.venv/
+.venv*/
+venv/
+env/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+credentials.json
+secrets.json
+
+# Generated build and QA artifacts
+/build/
+/qa/
+*.pdf
+
+# OS/editor detritus
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

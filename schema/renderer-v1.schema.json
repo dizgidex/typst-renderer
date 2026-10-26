@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:dizgidex:typst-renderer:schema:1",
+  "title": "Subject-neutral Typst Renderer Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "document", "pages"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "language", "page"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "language": {"type": "string", "minLength": 1},
+        "page": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["width_mm", "height_mm", "margin_mm"],
+          "properties": {
+            "width_mm": {"type": "number", "exclusiveMinimum": 0},
+            "height_mm": {"type": "number", "exclusiveMinimum": 0},
+            "margin_mm": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["top", "right", "bottom", "left"],
+              "properties": {
+                "top": {"type": "number", "exclusiveMinimum": 0},
+                "right": {"type": "number", "exclusiveMinimum": 0},
+                "bottom": {"type": "number", "exclusiveMinimum": 0},
+                "left": {"type": "number", "exclusiveMinimum": 0}
+              }
+            }
+          }
+        }
+      }
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "blocks"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "section": {"type": "string", "minLength": 1},
+          "title": {"type": "string", "minLength": 1},
+          "subtitle": {"type": "string", "minLength": 1},
+          "blocks": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["type", "level", "text"],
+                  "properties": {
+                    "type": {"const": "heading"},
+                    "level": {"enum": [1, 2, 3]},
+                    "text": {"type": "string", "minLength": 1}
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["type", "text"],
+                  "properties": {
+                    "type": {"const": "paragraph"},
+                    "text": {"type": "string", "minLength": 1}
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["type", "ordered", "items"],
+                  "properties": {
+                    "type": {"const": "list"},
+                    "ordered": {"type": "boolean"},
+                    "items": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {"type": "string", "minLength": 1}
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["type", "tone", "title", "text"],
+                  "properties": {
+                    "type": {"const": "callout"},
+                    "tone": {"enum": ["note", "tip", "caution"]},
+                    "title": {"type": "string", "minLength": 1},
+                    "text": {"type": "string", "minLength": 1}
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["type", "label", "value"],
+                  "properties": {
+                    "type": {"const": "fact_card"},
+                    "label": {"type": "string", "minLength": 1},
+                    "value": {"type": "string", "minLength": 1},
+                    "detail": {"type": "string", "minLength": 1}
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["type", "nodes", "relations"],
+                  "properties": {
+                    "type": {"const": "relationship_diagram"},
+                    "nodes": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 6,
+                      "items": {"type": "string", "minLength": 1}
+                    },
+                    "relations": {
+                      "type": "array",
+                      "minItems": 1,
+                      "maxItems": 5,
+                      "items": {"type": "string", "minLength": 1}
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
