@@ -27,7 +27,7 @@ jobs:
       - name: Set up Typst
         uses: typst-community/setup-typst@fee4b65b091cc546f02ce3be15fad8760f38a108
         with:
-          typst-version: "0.14.2"
+          typst-version: "0.15.1"
 
       - name: Install pinned fonts and PDF utilities
         run: |

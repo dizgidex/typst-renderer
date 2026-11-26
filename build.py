@@ -14,7 +14,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parent
-REQUIRED_TYPST_PREFIX = "typst 0.14.2"
+REQUIRED_TYPST_PREFIX = "typst 0.15.1"
 
 
 class InputError(ValueError):

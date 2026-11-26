@@ -4,7 +4,7 @@
 
 | Dependency | Use | Version/status |
 |---|---|---|
-| Typst CLI | JSON-driven document compilation | 0.14.2 required by `build.py` |
+| Typst CLI | JSON-driven document compilation | 0.15.1 required by `build.py` |
 | Python | JSON validation and command wrapper | 3.13.2 in pinned QA; runtime standard library only |
 | PT Sans | Body and heading typography | External installed font; not bundled |
 | PT Mono | Page-number typography | External installed font; not bundled |

@@ -7,7 +7,7 @@ This is an experimental local implementation. It is not a production publishing 
 ## Requirements
 
 - Python 3.13.2 for the pinned QA environment. The renderer build wrapper itself uses only the standard library.
-- Typst CLI **0.14.2**. The build wrapper rejects other versions to keep the current smoke build reproducible.
+- Typst CLI **0.15.1**. The build wrapper rejects other versions to keep the current smoke build reproducible.
 - PT Sans and PT Mono installed on the system. Fonts are not bundled. See [DEPENDENCIES.md](DEPENDENCIES.md).
 - Poppler `pdfinfo` for automated page-count verification in the smoke tests.
 
