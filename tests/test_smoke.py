@@ -18,7 +18,7 @@ EXAMPLE = ROOT / "examples/synthetic-book.json"
 SCHEMA = ROOT / "schema/renderer-v1.schema.json"
 
 
-@unittest.skipUnless(shutil.which("typst") and shutil.which("pdfinfo"), "requires Typst 0.14.2 and Poppler pdfinfo")
+@unittest.skipUnless(shutil.which("typst") and shutil.which("pdfinfo"), "requires Typst 0.15.1 and Poppler pdfinfo")
 class RendererSmokeTests(unittest.TestCase):
     def run_build(self, source: Path, output: Path) -> subprocess.CompletedProcess[str]:
         return subprocess.run(
